@@ -1,0 +1,18 @@
+import requests
+from bs4 import BeautifulSoup
+import pandas as pd
+
+url = 'https://crypto.com/nft/collection/15ff325725a14f0b66abe919b2b9f22b?sort=price&order=ASC&maxPrice=40&buyNow=true&asset=d41967b84bf6d499d7ca67227b44b3ab&edition=d85111bdd06426354b747b71542b3eda&detail-page=MARKETPLACE&editions-mode=select&sort-field=price&sort-direction=ASC&page=1'
+
+def get_data(url):
+  r = requests.get(url)
+  soup = BeautifulSoup(r.text, 'html.parser')
+  return soup
+
+def parse(soup):
+  results = soup. find_all('div', {'class': 'css-js2x8m'})
+  print(len(results))
+  return
+
+soup = get_data(url)
+parse(soup)
